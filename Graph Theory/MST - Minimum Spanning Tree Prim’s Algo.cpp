@@ -1,5 +1,5 @@
-#include
-#define pii pair
+#include<bits/stdc++.h>
+#define pii pair<int,int>
 using namespace std;
 const int MAX = 100005;
 struct node
@@ -12,11 +12,13 @@ struct node
         w = _w;
     }
 };
-bool operator b.w;
+bool operator<(node a,node b)
+{
+    return a.w > b.w;
 }
 int cost[MAX],vis[MAX],n,e;
-priority_queue pq;
-vector  adj[MAX];
+priority_queue<node> pq;
+vector < pii > adj[MAX];
 int prim(int src)
 {
     for(int i=1;i<=n;i++)
@@ -36,9 +38,22 @@ int prim(int src)
         {
             if(vis[v.first])
                 continue;
-            else if(v.second > n >> e;
+            else if(v.second < cost[v.first])
+            {
+                cost[v.first] = v.second;
+                pq.push(node(v.first,v.second));
+            }
+        }
+    }
+    return ans;
+}
+int main()
+{
+    cin >> n >> e;
     int u,v,w;
-    for(int i=0;i> u >> v >> w;
+    for(int i=0;i<e;i++)
+    {
+        cin >> u >> v >> w;
         adj[u].push_back(pii(v,w));
         adj[v].push_back(pii(u,w));
     }
